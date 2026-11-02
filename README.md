@@ -1,8 +1,8 @@
 # Wedding SaaS — Business Website
 
-The marketing site for Wedding SaaS: landing page, pricing and Stripe checkout. Next.js 16 with TypeScript and Tailwind CSS.
+The business website: a showcase for the done-for-you wedding website service, with an enquiry form. Couples enquire here; their site is then built in the `wedding-saas` admin area. Next.js 16 with TypeScript and Tailwind CSS.
 
-The wedding website template itself lives in [`wedding-saas`](https://github.com/avindipremaratne/wedding-saas). Both use the same Supabase project, and `wedding-saas` owns the database schema (including the `orders` table this site writes to).
+The wedding website template itself lives in [`wedding-saas`](https://github.com/avindipremaratne/wedding-saas). Both use the same Supabase project, and `wedding-saas` owns the database schema (including the `enquiries` and `orders` tables this site writes to).
 
 ## Run it
 
@@ -14,29 +14,29 @@ npm run lint
 npm run typecheck
 ```
 
-No keys are needed to see the site. Without Stripe keys the checkout button is disabled. Copy `.env.example` to `.env.local` to turn services on.
+No keys are needed to see the site; without them, enquiries are printed to the terminal. Copy `.env.example` to `.env.local` to turn services on.
 
 ## How it fits together
 
 | Path | What it is |
 | --- | --- |
-| `app/page.tsx` | Landing page with the "Start your site" form |
-| `app/api/checkout/route.ts` | Starts a Stripe Checkout session from the form |
-| `app/api/stripe/webhook/route.ts` | Verifies Stripe's signature and records the paid order in Supabase |
-| `app/checkout/success/page.tsx` | Thank-you page after payment |
-| `lib/checkout.ts` | Form validation (unit tested) |
-| `lib/stripe.ts`, `lib/supabase/server.ts` | Server-only Stripe and Supabase admin clients |
+| `app/page.tsx` | The showcase: what's included, designs, how it works, pricing ("Contact for pricing") and the enquiry form |
+| `components/EnquiryForm.tsx`, `app/actions/enquiry.ts` | The enquiry form and its Server Action: validates, saves to Supabase and emails you |
+| `lib/enquiry.ts`, `lib/email.ts` | Enquiry validation (unit tested) and the Resend email |
+| `lib/brand.ts` | Business name, contact email and demo link, from environment variables |
+| `public/showcase/` | Stills from the Heirloom envelope video, shown in the phone frames |
+| `app/api/checkout`, `app/api/stripe/webhook`, `app/checkout/success` | Stripe checkout, no longer linked from the page; kept for deposits later |
 
 ## Setting up services
 
-**Stripe.** Create a product and price, then set `STRIPE_SECRET_KEY`, `STRIPE_PRICE_ID` and optionally `STRIPE_CHECKOUT_MODE=subscription` (the pricing model is still open, so it is configuration, not code). Add a webhook for `checkout.session.completed` pointing at `https://<your domain>/api/stripe/webhook` and set `STRIPE_WEBHOOK_SECRET`. To test locally, run `stripe listen --forward-to localhost:3000/api/stripe/webhook` with the Stripe CLI.
+**Brand.** Set `NEXT_PUBLIC_BRAND_NAME` once the business name is chosen (until then the site says "Wedding Websites"), and optionally `NEXT_PUBLIC_CONTACT_EMAIL` and `NEXT_PUBLIC_EXAMPLE_SITE_URL` (the live demo).
 
-**Supabase.** Apply the migrations from the `wedding-saas` repo first, then set `NEXT_PUBLIC_SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` here. Paid checkouts appear in the `orders` table.
+**Enquiries.** Run `supabase/migrations/20261102000000_enquiries.sql` from the `wedding-saas` repo, then set `NEXT_PUBLIC_SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` here. For the email, set `RESEND_API_KEY`, `ENQUIRY_FROM_EMAIL` and `ENQUIRY_TO_EMAIL`. Either one is enough to receive an enquiry; with both, each enquiry is emailed to you and listed in the `wedding-saas` admin area under **Enquiries**. Replying to the email replies to the couple.
 
-**Example link.** Set `NEXT_PUBLIC_EXAMPLE_SITE_URL` to a live `wedding-saas` deployment to show the "See an example" button.
+**Stripe (later).** The checkout code still works if you want online deposits: create a product and price, set `STRIPE_SECRET_KEY` and `STRIPE_PRICE_ID`, add a webhook for `checkout.session.completed` at `https://<your domain>/api/stripe/webhook` and set `STRIPE_WEBHOOK_SECRET`. Paid checkouts appear in the `orders` table.
 
-## After a payment (service phase)
+## After an enquiry
 
-1. The order appears in Supabase → `orders`.
-2. Collect the couple's details, then create their site in `wedding-saas` (see its README, "Adding a couple").
-3. Optionally link it back by setting `orders.site_id`.
+1. It arrives in your inbox and in the `wedding-saas` admin area → **Enquiries**.
+2. Reply to the couple, agree the design and price.
+3. Create their site in the admin area (**New site**), then mark the enquiry as handled.

@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Ephesis, Montserrat } from "next/font/google";
+import { brand } from "@/lib/brand";
 import "./globals.css";
 
 // Brand fonts (shared with Theme 1 for now), self-hosted by next/font and
@@ -14,8 +15,8 @@ const cormorant = Cormorant_Garamond({
 });
 
 export const metadata: Metadata = {
-  title: { default: "Wedding websites that feel like the invitation", template: "%s · Wedding SaaS" },
-  description: "Elegant, personal wedding websites with RSVPs, galleries and music.",
+  title: { default: `${brand.name}: wedding websites that feel like the invitation`, template: `%s · ${brand.name}` },
+  description: "Elegant, personal wedding websites designed for you, with RSVPs, galleries and music.",
 };
 
 export const viewport: Viewport = {
