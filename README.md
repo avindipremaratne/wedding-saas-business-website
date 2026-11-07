@@ -1,6 +1,6 @@
-# Wedding SaaS — Business Website
+# Vindora Invites: business website
 
-The business website: a showcase for the done-for-you wedding website service, with an enquiry form. Couples enquire here; their site is then built in the `wedding-saas` admin area. Next.js 16 with TypeScript and Tailwind CSS.
+The public website for Vindora Invites: a showcase for the done-for-you wedding website service (an envelope, wax seal and invitation opening), with an enquiry form. Couples enquire here; their site is then built in the `wedding-saas` admin area. Next.js 16 with TypeScript and Tailwind CSS.
 
 The wedding website template itself lives in [`wedding-saas`](https://github.com/avindipremaratne/wedding-saas). Both use the same Supabase project, and `wedding-saas` owns the database schema (including the `enquiries` and `orders` tables this site writes to).
 

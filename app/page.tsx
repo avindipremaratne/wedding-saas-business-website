@@ -39,8 +39,9 @@ const primaryButton =
 const secondaryButton =
   "rounded-full border border-navy px-8 py-3.5 font-sans text-xs font-medium uppercase tracking-[0.2em] text-navy transition-colors hover:border-gold hover:text-gold";
 
-// The business website: a showcase for the done-for-you service. Couples
-// enquire here; their site is then built in the wedding-saas admin area.
+// The Vindora Invites business website: a showcase for the done-for-you
+// service. Couples enquire here; their site is then built in the
+// wedding-saas admin area.
 export default function Home() {
   return (
     <>
@@ -69,11 +70,12 @@ export default function Home() {
       <main id="top" className="flex-1 bg-silk text-ink">
         <section className="mx-auto grid max-w-6xl items-center gap-14 px-6 pb-20 pt-16 md:grid-cols-[1.15fr_1fr] md:pt-24">
           <div className="text-center md:text-left">
-            <p className="mb-4 font-sans text-xs uppercase tracking-[0.3em] text-gold">Wedding websites, made for you</p>
+            <p className="mb-4 font-sans text-xs uppercase tracking-[0.3em] text-gold">Wedding invitations, reimagined online</p>
             <h1 className="mb-6 font-script text-6xl leading-[1.05] md:text-7xl lg:text-8xl">A website that feels like the invitation</h1>
             <p className="mx-auto mb-10 max-w-xl font-sans text-base font-light leading-relaxed text-charcoal md:mx-0">
-              We design and build your wedding website for you: your names, your photos, your song, and RSVPs that come
-              straight to you. You tell us what you love, we take care of the rest.
+              At {brand.name}, we design and build your wedding website for you. Guests open a wax-sealed envelope to
+              find your invitation, your photos and your song, and their RSVPs come straight to you. You tell us what you
+              love; we take care of the rest.
             </p>
             <div className="flex flex-col justify-center gap-3 sm:flex-row md:justify-start">
               <a href="#enquire" className={primaryButton}>
@@ -171,6 +173,7 @@ export default function Home() {
 
       <footer className="border-t border-gold/20 bg-navy px-6 py-10 text-center text-white/80">
         <p className="mb-2 font-script text-3xl text-white [word-spacing:0.15em]">{brand.name}</p>
+        <p className="mb-4 font-sans text-xs uppercase tracking-[0.25em] text-gold">Wedding websites that open like an invitation</p>
         {brand.contactEmail && (
           <a href={`mailto:${brand.contactEmail}`} className="font-sans text-sm hover:text-gold">
             {brand.contactEmail}
