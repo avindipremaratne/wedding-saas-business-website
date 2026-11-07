@@ -15,8 +15,8 @@ const cormorant = Cormorant_Garamond({
 });
 
 export const metadata: Metadata = {
-  title: { default: `${brand.name}: wedding websites that feel like the invitation`, template: `%s · ${brand.name}` },
-  description: "Elegant, personal wedding websites designed for you, with RSVPs, galleries and music.",
+  title: { default: `${brand.name}: wedding websites that open like an invitation`, template: `%s · ${brand.name}` },
+  description: `${brand.name} designs elegant, personal wedding websites for you: a wax-sealed envelope that opens to your invitation, with RSVPs, a photo gallery and your song.`,
 };
 
 export const viewport: Viewport = {
