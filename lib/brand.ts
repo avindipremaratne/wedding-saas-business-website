@@ -1,9 +1,8 @@
-// The business name and contact details, in one place. The name isn't
-// decided yet, so it comes from NEXT_PUBLIC_BRAND_NAME with a neutral
-// stand-in; set the variable (or change the default) once it is chosen.
+// The business name and contact details, in one place. The name defaults
+// to "Vindora Invites"; NEXT_PUBLIC_BRAND_NAME overrides it if ever needed.
 
 export const brand = {
-  name: process.env.NEXT_PUBLIC_BRAND_NAME?.trim() || "Wedding Websites",
+  name: process.env.NEXT_PUBLIC_BRAND_NAME?.trim() || "Vindora Invites",
   /** Shown in the footer when set. */
   contactEmail: process.env.NEXT_PUBLIC_CONTACT_EMAIL?.trim() || "",
   /** A live wedding-saas site for the "View the live demo" buttons. */

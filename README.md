@@ -29,7 +29,7 @@ No keys are needed to see the site; without them, enquiries are printed to the t
 
 ## Setting up services
 
-**Brand.** Set `NEXT_PUBLIC_BRAND_NAME` once the business name is chosen (until then the site says "Wedding Websites"), and optionally `NEXT_PUBLIC_CONTACT_EMAIL` and `NEXT_PUBLIC_EXAMPLE_SITE_URL` (the live demo).
+**Brand.** The site is called "Vindora Invites" by default; `NEXT_PUBLIC_BRAND_NAME` overrides it. Optionally set `NEXT_PUBLIC_CONTACT_EMAIL` and `NEXT_PUBLIC_EXAMPLE_SITE_URL` (the live demo).
 
 **Enquiries.** Run `supabase/migrations/20261102000000_enquiries.sql` from the `wedding-saas` repo, then set `NEXT_PUBLIC_SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` here. For the email, set `RESEND_API_KEY`, `ENQUIRY_FROM_EMAIL` and `ENQUIRY_TO_EMAIL`. Either one is enough to receive an enquiry; with both, each enquiry is emailed to you and listed in the `wedding-saas` admin area under **Enquiries**. Replying to the email replies to the couple.
 
