@@ -25,6 +25,8 @@ No keys are needed to see the site; without them, enquiries are printed to the t
 | `lib/enquiry.ts`, `lib/email.ts` | Enquiry validation (unit tested) and the Resend email |
 | `lib/brand.ts` | Business name, contact email and demo link, from environment variables |
 | `public/showcase/` | Stills from the Heirloom envelope video, shown in the phone frames |
+| `public/brand/`, `app/icon.png`, `app/apple-icon.png`, `app/favicon.ico`, `app/opengraph-image.png` | The Vindora Invites logo (hero and footer), the VI monogram (header and browser icons) and the link-preview image |
+| `app/globals.css` | Colour tokens taken from the logo: charcoal `ink` on the warm grey `mist` |
 
 ## Setting up services
 

@@ -6,7 +6,7 @@ import { DESIGN_CHOICES, ENQUIRY_LIMITS } from "@/lib/enquiry";
 
 const labelClass = "mb-2 block font-sans text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-ink";
 const fieldClass =
-  "w-full border-0 border-b border-gold bg-transparent py-2 font-sans text-base font-light text-charcoal outline-none placeholder:text-charcoal/40 focus:border-navy aria-[invalid=true]:border-red-600";
+  "w-full border-0 border-b border-taupe bg-transparent py-2 font-sans text-base font-light text-charcoal outline-none placeholder:text-charcoal/40 focus:border-ink aria-[invalid=true]:border-red-600";
 
 export default function EnquiryForm() {
   const [state, formAction, pending] = useActionState<EnquiryState, FormData>(submitEnquiry, { status: "idle" });
@@ -14,7 +14,7 @@ export default function EnquiryForm() {
   if (state.status === "success") {
     return (
       <div className="py-6 text-center" role="status">
-        <p className="mb-3 font-script text-5xl text-ink">Thank you!</p>
+        <p className="mb-3 font-serif text-5xl font-light text-ink">Thank you!</p>
         <p className="mx-auto max-w-sm font-sans text-[0.95rem] font-light leading-relaxed text-charcoal">
           We&apos;ve received your enquiry and will be in touch soon to talk about your day.
         </p>
@@ -115,7 +115,7 @@ export default function EnquiryForm() {
       <button
         type="submit"
         disabled={pending}
-        className="w-full rounded-full bg-navy px-6 py-4 font-sans text-xs font-medium uppercase tracking-[0.2em] text-white transition-colors hover:bg-gold disabled:cursor-not-allowed disabled:opacity-60"
+        className="w-full rounded-full bg-ink px-6 py-4 font-sans text-xs font-medium uppercase tracking-[0.2em] text-white transition-colors hover:bg-charcoal disabled:cursor-not-allowed disabled:opacity-60"
       >
         {pending ? "Sending…" : "Send enquiry"}
       </button>

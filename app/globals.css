@@ -1,21 +1,19 @@
 @import "tailwindcss";
 
-/* Brand colour tokens, matching Theme 1 (Heirloom) for now. Each becomes a
-   Tailwind utility (bg-gold, text-navy, border-gold/20 ...). */
+/* Brand colour tokens, taken from the Vindora Invites logo: charcoal on a
+   warm light grey. Each becomes a Tailwind utility (bg-mist, text-ink,
+   border-taupe/20 ...). */
 @theme {
-  --color-gold: #c8a96a;
-  --color-navy: #1f2a44;
-  --color-ivory: #f5ecd7;
-  --color-linen: #faf6f0;
-  --color-silk: #f7f3ee;
-  --color-ink: #1c1c1c;
-  --color-charcoal: #3a3a3a;
-  --color-porcelain: #fcfaf7;
+  --color-ink: #2c2c2c; /* the logo's lettering */
+  --color-charcoal: #474542; /* body text */
+  --color-taupe: #625e59; /* small labels, rules and accents */
+  --color-mist: #e6e4e1; /* the logo's background */
+  --color-porcelain: #efeeeb;
+  --color-linen: #f5f4f2;
 }
 
 /* Fonts come from next/font in app/layout.tsx as CSS variables. */
 @theme inline {
-  --font-script: var(--font-ephesis), cursive;
   --font-sans: var(--font-montserrat), sans-serif;
   --font-serif: var(--font-cormorant), serif;
 }
@@ -31,7 +29,7 @@ body {
 }
 
 body {
-  background: var(--color-silk);
+  background: var(--color-mist);
   color: var(--color-ink);
   font-family: var(--font-sans);
 }
